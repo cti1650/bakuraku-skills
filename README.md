@@ -41,6 +41,13 @@
 
 導入後、「この請求書をバクラクに申請して」等で自動的に呼び出される。
 
+ブラウザ操作用の Playwright MCP はプラグインに同梱している（`plugins/bakuraku-skills/.mcp.json`）。
+別途インストールする必要はなく、プラグインを有効にすると `npx` 経由で起動する。
+
+**初回だけ、立ち上がったブラウザで利用者自身がバクラクにログインする。**
+プロファイルは `${CLAUDE_PLUGIN_DATA}/chrome-profile` に永続化されるので、以降のセッションではログイン状態が引き継がれる。
+エージェントは認証情報を受け取らない。
+
 ### Codex
 
 リポジトリをクローンし、作業ディレクトリとして開く。ルートの `AGENTS.md` が参照先を案内する。
@@ -51,11 +58,22 @@ cd bakuraku-skills
 codex
 ```
 
+Codex はプラグインの `.mcp.json` を読まないため、Playwright MCP は `~/.codex/config.toml` に自分で登録する。
+
+```toml
+[mcp_servers.playwright]
+command = "npx"
+args = ["-y", "@playwright/mcp@latest", "--user-data-dir", "/absolute/path/to/chrome-profile"]
+```
+
+`--user-data-dir` を省略すると毎回一時プロファイルになり、そのつどログインし直しになる。
+
 ## 前提
 
 - **ログインは利用者自身が行う。** このスキルは認証情報を扱わない（[バクラク共通利用規約](https://bakuraku.jp/terms/common/) 第12条第4項・第17条第10号）
 - **下書き保存までで止まる。** 申請の提出は人が内容を確認してから行う
-- ブラウザ操作には Playwright MCP 等、ブラウザを操作できる手段が別途必要
+- ブラウザ操作には Playwright MCP を使う。Claude Code では同梱済み、Codex では利用者が登録する
+- `npx` が動く Node.js 環境が必要
 
 ## 構成
 
@@ -65,6 +83,7 @@ codex
 ├── AGENTS.md                           Codex 用の入口
 └── plugins/bakuraku-skills/
     ├── .claude-plugin/plugin.json      プラグイン定義
+    ├── .mcp.json                       同梱する MCP サーバ（Playwright）
     └── skills/bakuraku-apply/
         ├── SKILL.md                    手順と制約
         └── references/
