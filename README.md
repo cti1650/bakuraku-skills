@@ -1,6 +1,11 @@
 # bakuraku-skills
 
-バクラク（https://workflow.layerx.jp ）の申請作業を支援する社内向けスキル集。
+バクラク（https://workflow.layerx.jp ）の申請作業を支援するスキル集。
+
+> [!NOTE]
+> **個人が検証目的で作成しているリポジトリ。** 特定の組織の公式ツールではなく、
+> 作者の所属先の見解を代表するものでもない。無保証で提供する。
+> 業務で使う場合は、各自の組織のルールに従って判断すること。
 
 > [!IMPORTANT]
 > **組織固有の情報はこのリポジトリに含めない。**
@@ -94,3 +99,7 @@ args = ["-y", "@playwright/mcp@latest", "--user-data-dir", "/absolute/path/to/ch
 ## 更新
 
 対応表や画面手順を変えたら `plugins/bakuraku-skills/.claude-plugin/plugin.json` の `version` を上げる。
+
+## ライセンス
+
+MIT License. 詳細は [LICENSE](LICENSE) を参照。

@@ -1,10 +1,10 @@
 {
   "name": "bakuraku-skills",
   "description": "請求書PDFからバクラクのカード利用報告の下書きを作成する。ベンダー判定の対応表と画面操作手順を提供し、探索にかかるトークンを削減する",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "cti1650"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "keywords": ["bakuraku", "layerx", "invoice", "expense", "workflow"]
 }
