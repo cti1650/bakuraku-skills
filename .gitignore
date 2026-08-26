@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+dist/
+*.skill
+
+# 組織固有の対応表（カード利用名・稟議名・内訳・利用中サービス）はコミットしない
+*.local.md
