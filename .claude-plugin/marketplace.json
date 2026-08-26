@@ -4,7 +4,7 @@
     "name": "cti1650"
   },
   "metadata": {
-    "description": "バクラク(workflow.layerx.jp)の申請作業を支援する社内向けスキル集"
+    "description": "バクラク(workflow.layerx.jp)の申請作業を支援するスキル集"
   },
   "plugins": [
     {
